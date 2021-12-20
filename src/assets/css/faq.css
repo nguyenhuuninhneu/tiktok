@@ -1,0 +1,55 @@
+.faq .colLeft .touch-section .Polaris-Card .Polaris-Card__Section{
+    padding: 0;
+}
+
+.title-fix{
+    padding: 20px 20px 30px 20px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+
+.faq .btnEnableApp button {
+    height: 36px;
+    padding: 8px 16px;
+}
+
+.faq .btnEnableApp.active button {
+    background: #008060;
+    color: #fff;
+}
+
+.faq .touch-section .group-touch .item-touch{
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #E1E3E5;
+}
+.faq .touch-section .group-touch .item-touch:last-child{
+    border-bottom: none;
+}
+.faq .touch-section .group-touch .item-touch .item-left{
+    justify-items: left;
+    flex: 0.5;
+}
+.faq .touch-section .group-touch .item-touch .item-right{
+    flex: 2;
+    padding-left: 20px;
+}
+
+.faq .touch-section .group-touch .item-touch .item-right .Polaris-Link{
+   color: #0094FF;
+   text-decoration: none;
+    font-weight: 700
+}
+
+.faq .touch-section .Polaris-Card,
+.faq .resources-section .Polaris-Card
+{
+    border-radius: 0 !important;
+}
+
+.Polaris-Heading{
+    
+}

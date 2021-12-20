@@ -1,0 +1,82 @@
+
+.setting .flexible-p p {
+    margin-bottom: 6px;
+}
+
+.setting .btnEnableApp button {
+    height: 36px;
+    padding: 8px 16px;
+    margin-top: 14px;
+}
+
+.setting .btnEnableApp.active button {
+    background: #008060;
+    color: #fff;
+}
+
+.setting .Polaris-SkeletonPage__Page {
+    padding: 0;
+}
+
+.setting .button-style-section .group-logo {
+    margin-top: 30px;
+}
+
+.setting .button-style-section .group-logo .item-logo {
+    float: left;
+    margin-right: 15px;
+}
+
+.setting .button-style-section .group-logo .item-logo:hover .Polaris-Button,
+.setting .button-style-section .group-logo .item-logo.active .Polaris-Button {
+    border: 3px solid #04A7B9
+}
+
+.setting .button-style-section .group-logo .item-logo .Polaris-Button {
+    padding: 2px;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    box-shadow: none;
+}
+
+.setting .button-style-section .group-logo .item-logo img {
+    width: 60px;
+}
+
+.setting .button-position-section .group-position {
+    margin-bottom: 30px;
+}
+
+.setting .button-position-section .group-position .item-left {
+    float: left;
+    width: 50%;
+}
+
+.setting .button-position-section .group-position .item-right {
+    float: right;
+    width: 50%;
+}
+
+.setting .button-position-section .group-position .item-right .Polaris-ButtonGroup {
+    justify-content: flex-end;
+}
+
+.setting .button-position-section .group-position .item-left .choose-bottom.active .Polaris-Button,
+.setting .button-position-section .group-position .item-left .choose-top.active .Polaris-Button,
+.setting .button-position-section .group-position .item-right .choose-left.active .Polaris-Button,
+.setting .button-position-section .group-position .item-right .choose-right.active .Polaris-Button {
+    background-color: #008060;
+    color: #fff;
+}
+
+.setting .colRight .Preview .skeleton-section {
+    position: relative;
+    margin: 48px 0;
+}
+.setting .colRight .Preview .logo img {
+    display: block;
+    width: 70px;
+    position: absolute;
+    bottom: 35px;
+    right: 35px;
+}

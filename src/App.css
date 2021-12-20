@@ -1,106 +1,83 @@
 /* Common */
-*{
-  margin: 0;
-  padding: 0;
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-#root{
-  background-color: #F6F6F7;
+#root {
+    background-color: #F6F6F7;
 }
 
-.colLeft{
-  float: left;
+.colLeft {
+    float: left;
 }
 
-.colRight{
-  float: right;
+.colRight {
+    float: right;
 }
 
-.w50pc{
-  width: 50%;
+.w50pc {
+    width: 50%;
 }
 
-.w48pc{
-  width: 48%;
+.w48pc {
+    width: 48%;
 }
 
-.cb{
-  clear: both;
+.w70pc {
+    width: 70%;
 }
 
-.required{
-  color:red;
+.w30pc {
+    width: 30%;
 }
+
+.w66pc {
+    width: 66%;
+}
+
+.cb {
+    clear: both;
+}
+
+.required {
+    color: red;
+}
+
+
 /* Section */
-.main-layout{
-  padding: 30px 40px 30px 30px;
-  box-sizing: border-box;
+
+.main-layout {
+    padding: 30px 40px 30px 30px;
+    box-sizing: border-box;
 }
 
-.header-item{
-  margin-bottom: 30px;
+.header-item {
+    margin-bottom: 30px;
 }
 
-.header-item .Polaris-Tabs__Tab--selected{
-  font-weight: bold;
-}
-.header-item .Polaris-Card{
-  box-shadow: none;
-  border-radius: none;
-  background-color: inherit;
-  width: 50%;
-}
-.mb-20{
-  margin-bottom: 20px;
-}
-.setting .flexible-p p{
-  margin-bottom: 6px;
+.header-item .Polaris-Tabs__Tab--selected {
+    font-weight: bold;
 }
 
-.setting .btnEnableApp button{
-  height: 36px;
-  padding: 8px 16px;
-  margin-top: 14px;
-}
-.setting .btnEnableApp.active button{
-  background: #008060;
-  color: #fff;
-}
-.setting .Polaris-SkeletonPage__Page{
-  padding: 0;
+.header-item .Polaris-Card {
+    box-shadow: none;
+    border-radius: none;
+    background-color: inherit;
+    width: 50%;
 }
 
-.setting .button-style-section .group-logo{
-  margin-top: 30px;
+.mb-20 {
+    margin-bottom: 20px;
 }
 
-.setting .button-style-section .group-logo .item-logo{
-  float: left;
-  margin-right: 20px;
-}
-.setting .button-style-section .group-logo .item-logo .Polaris-Button{
-  border: none;
+.mt-10 {
+    margin-top: 10px;
 }
 
-.setting .button-style-section .group-logo .item-logo.active .Polaris-Button{
-  border: 2px solid #04A7B9
+.common-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
-.setting .button-style-section .group-logo .item-logo img{
-  width: 60px;
-}
-
-.setting .button-position-section .title-username{
-
-}
-
-.setting .colRight .Preview{
-  position: relative;
-}
-.setting .colRight .Preview .logo img{
-  display: block;
-  width: 70px;
-  position: absolute;
-  bottom: 50px;
-  right: 35px;
-}
-
