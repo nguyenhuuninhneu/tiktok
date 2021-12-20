@@ -1,30 +1,28 @@
 import React, { useState, Component } from 'react';
-import { Card, Button, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer } from '@shopify/polaris';
+import { Card, Button, TextField, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer } from '@shopify/polaris';
 import logo from '../../assets/images/tiktok.png'
 import logo1 from '../../assets/images/tiktok-1.png'
 import logo2 from '../../assets/images/tiktok-2.png'
 
-var getLogo = logo;
 
 const listLogoData = [logo, logo1, logo2];
-const listLogoDisplay = []
 
 class Setting extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isEnable: true,
+            getLogo: logo
         }
         this.handleEnableApp = this.handleEnableApp.bind(this);
-        
+
     }
 
     handleEnableApp() {
         this.setState(state => ({ isEnable: !state.isEnable }));
     }
     changeLogo(logoSelected) {
-        debugger;
-        getLogo = logoSelected;
+        this.setState(state => ({ getLogo: logoSelected }));
     }
     render() {
         const contentStatus = this.state.isEnable ? 'Enable App' : 'Disable App';
@@ -49,12 +47,13 @@ class Setting extends Component {
                             <p>Several options are offered as Tiktok button.</p>
                             <p>You may also use a custom image</p>
                             <div className={'group-logo'}>
-                            
+
                                 {
-                                    listLogoData.map((logoitem) => {
+                                    listLogoData.map((logoitem, index) => {
+                                        debugger
                                         return (
-                                            <div className={'item-logo'}>
-                                                <Button >
+                                            <div key={index} className={'item-logo'}>
+                                                <Button onClick={() => { this.changeLogo(logoitem) }}>
                                                     <img src={logoitem} alt="" />
                                                 </Button>
                                             </div>
@@ -70,12 +69,13 @@ class Setting extends Component {
                     </div>
                     <div className={'button-position-section flexible-p mb-20'}>
                         <Card title="Step 2: Choose the button position" sectioned>
-                            <p>This plugin allows you to display a static/animated floating Tiktok logo or</p>
-                            <p>This plugin allows you to display a static/animated fating Tiktok logo or Tikcode (on frontend) linked to your Tiktok account to increase your</p>
-                            <p>Tiktok followers.</p>
-                            <div className={contentClassStatus}>
-                                <Button onClick={this.handleEnableApp} >{contentStatus}</Button>
+                            <div className={title-username}>
+                                Tiktok Username  <span style='color:red;'>(*)</span>
                             </div>
+                            <TextField
+                               placeholder="username"
+                                autoComplete="off"
+                            />
 
                         </Card>
                     </div>
@@ -106,7 +106,7 @@ class Setting extends Component {
                             </SkeletonPage>
                         </Card>
                         <div className={'logo'}>
-                            <img src={getLogo} alt="" />
+                            <img src={this.state.getLogo} alt="" />
                         </div>
                     </div>
 
