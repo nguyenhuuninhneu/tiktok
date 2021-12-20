@@ -1,3 +1,4 @@
+/* Common */
 *{
   margin: 0;
   padding: 0;
@@ -26,6 +27,11 @@
 .cb{
   clear: both;
 }
+
+.required{
+  color:red;
+}
+/* Section */
 .main-layout{
   padding: 30px 40px 30px 30px;
   box-sizing: border-box;
@@ -81,6 +87,10 @@
 }
 .setting .button-style-section .group-logo .item-logo img{
   width: 60px;
+}
+
+.setting .button-position-section .title-username{
+
 }
 
 .setting .colRight .Preview{

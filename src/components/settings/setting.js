@@ -69,13 +69,16 @@ class Setting extends Component {
                     </div>
                     <div className={'button-position-section flexible-p mb-20'}>
                         <Card title="Step 2: Choose the button position" sectioned>
-                            <div className={title-username}>
-                                Tiktok Username  <span style='color:red;'>(*)</span>
+                            <div className={'title-username'}>
+                                Tiktok Username  <span className={'required'}>(*)</span>
                             </div>
-                            <TextField
-                               placeholder="username"
-                                autoComplete="off"
-                            />
+                            <div className={'w50pc'}>
+                                <TextField
+                                    placeholder="username"
+                                    autoComplete="off"
+                                    className={'w50pc'}
+                                />
+                            </div>
 
                         </Card>
                     </div>
