@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Link, Heading, Thumbnail, ResourceList, ResourceItem, TextStyle, Avatar, Button, ButtonGroup, TextField, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer, Icon } from '@shopify/polaris';
+import { Card, Link, Heading, Thumbnail, TextStyle, Button, TextContainer, Icon, Pagination, VideoThumbnail, MediaCard } from '@shopify/polaris';
 import { EmailMajor, ChatMajor, PhoneMajor, PromoteMinor } from '@shopify/polaris-icons';
 import '../../assets/css/faq.css';
 import '../../App.css';
@@ -9,12 +9,8 @@ class FAQ extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
-
     }
-
-
     render() {
         return (
             <div className={'faq'}>
@@ -140,10 +136,67 @@ class FAQ extends Component {
                     </div>
                 </div>
                 <div className='colRight w66pc'>
-                    <div className={'Preview'}>
+                    <div className={'watch-video-tutorial'}>
                         <Card sectioned>
                             <div className={'common-title'}>
-                                Preview
+                                Watch video tutorials
+                            </div>
+                            <TextContainer>
+                                <p>
+                                    Did you know we have a super comprehensive help center and video tutorial series which answers most common questions?
+                                </p>
+                            </TextContainer>
+                            <div className={'group-video'}>
+                                <div className={'item-video'}>
+                                    <MediaCard
+                                        title="Turn your side-project into a business"
+                                        primaryAction={{
+                                            content: 'Learn more',
+                                            onAction: () => { },
+                                        }}
+                                        description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
+                                        popoverActions={[{ content: 'Dismiss', onAction: () => { } }]}
+                                    >
+                                        <VideoThumbnail
+                                            videoLength={80}
+                                            thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+                                        />
+                                    </MediaCard>
+                                </div>
+                                <div className={'item-video'}>
+                                    <MediaCard
+                                        title="Turn your side-project into a business"
+                                        primaryAction={{
+                                            content: 'Learn more',
+                                            onAction: () => { },
+                                        }}
+                                        description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
+                                        popoverActions={[{ content: 'Dismiss', onAction: () => { } }]}
+                                    >
+                                        <VideoThumbnail
+                                            videoLength={80}
+                                            thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+                                        />
+                                    </MediaCard>
+                                </div>
+                                <div className={'cb'}>
+
+                                </div>
+                            </div>
+                            <div className={'pagination'}>
+                                <Pagination
+                                    hasPrevious
+                                    onPrevious={() => {
+                                        console.log('Previous');
+                                    }}
+                                    hasNext
+                                    onNext={() => {
+                                        console.log('Next');
+                                    }}
+                                />
+                                <div className={'title-page'}>
+                                    <TextStyle variation="subdued">1/4</TextStyle>
+                                </div>
                             </div>
                         </Card>
                     </div>

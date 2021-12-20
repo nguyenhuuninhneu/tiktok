@@ -120,3 +120,42 @@
     min-width: 0;
 
 }
+.faq .colRight .watch-video-tutorial .group-video{
+    margin: 20px 0;
+
+}
+.faq .colRight .watch-video-tutorial .group-video .item-video{
+    width: 49%;
+    float: left;
+}
+.faq .colRight .watch-video-tutorial .group-video .item-video:nth-child(2n){
+    margin-left: 2%;
+}
+.faq .colRight .watch-video-tutorial .group-video .item-video .Polaris-Card .Polaris-MediaCard{
+    padding: 15px;
+}
+.faq .colRight .watch-video-tutorial .group-video .item-video .Polaris-Card .Polaris-MediaCard .Polaris-MediaCard__MediaContainer{
+    flex-basis:100%;
+}
+
+.faq .colRight .watch-video-tutorial .group-video .item-video .Polaris-Card .Polaris-MediaCard .Polaris-MediaCard__InfoContainer{
+    flex-basis: 100%;
+}
+.faq .colRight .watch-video-tutorial .group-video .item-video .Polaris-Card .Polaris-MediaCard .Polaris-MediaCard__InfoContainer .Polaris-Card__Section{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.faq .colRight .watch-video-tutorial .group-video .item-video .Polaris-Card .Polaris-MediaCard .Polaris-MediaCard__InfoContainer .Polaris-Card__Section .Polaris-MediaCard__Popover{
+    top: 2.6rem;
+    right: 0;
+}
+
+.faq .colRight .watch-video-tutorial .pagination{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.faq .colRight .watch-video-tutorial .title-page{
+    padding-left: 8px;
+}

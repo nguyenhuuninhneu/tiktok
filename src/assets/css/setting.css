@@ -18,6 +18,11 @@
     padding: 0;
 }
 
+.setting .flexible-button .Polaris-Card
+{
+    border-radius: 0 !important;
+}
+
 .setting .button-style-section .group-logo {
     margin-top: 30px;
 }
