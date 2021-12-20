@@ -33,6 +33,9 @@
     justify-items: left;
     flex: 0.5;
 }
+.faq .touch-section .group-touch .item-touch .item-left .Polaris-Icon{
+    color: #5C5F62
+}
 .faq .touch-section .group-touch .item-touch .item-right{
     flex: 2;
     padding-left: 20px;
@@ -49,7 +52,71 @@
 {
     border-radius: 0 !important;
 }
+.faq .resources-section .group-resources .item-resource{
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #E1E3E5;
+}
+.faq .resources-section .group-resources .item-resource p{
+    line-height: 20px;
+}
+.faq .resources-section .group-resources .item-resource .user-info{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.faq .resources-section .group-resources .item-resource .user-info .left .Polaris-Thumbnail{
+    border: 0
+}
 
-.Polaris-Heading{
+.faq .resources-section .group-resources .item-resource .user-info .left img{
+    width: 55px;
+    border-radius: 50%;
+}
+
+.faq .resources-section .group-resources .item-resource .user-info .right{
+    padding-left: 15px;
+    font-style: italic;
+}
+.faq .resources-section .group-resources .item-resource .view-our-site{
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-items: center;
+    bottom: 0;
+    left:50%;
+    transform: translate(-50%);
     
+}
+
+.faq .resources-section .group-resources .item-resource:hover .view-our-site{
+    visibility: visible;
+}
+.faq .resources-section .group-resources .item-resource .view-our-site .Polaris-Link{
+    font-size: 15px;
+    color: #2C6ECB;
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+    margin-top: 1px;
+    border-bottom: 1px solid #2C6ECB;
+} 
+.faq .resources-section .group-resources .item-resource .view-our-site .Polaris-Icon{
+    color: #2C6ECB;
+    display: inline-block;
+    padding-top: 3px;
+    box-sizing: border-box;
+}
+
+.faq .resources-section .group-resources .item-resource .view-our-site .Polaris-Button{
+    display: inline-block;
+    border:none;
+    box-shadow: none;
+    padding: 0;
+    min-height:0;
+    min-width: 0;
+
 }

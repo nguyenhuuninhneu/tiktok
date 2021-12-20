@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card, Link, Heading, ResourceList, ResourceItem, TextStyle, Avatar, Button, ButtonGroup, TextField, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer, Icon } from '@shopify/polaris';
-import { CirclePlusMinor } from '@shopify/polaris-icons';
+import { Card, Link, Heading, Thumbnail, ResourceList, ResourceItem, TextStyle, Avatar, Button, ButtonGroup, TextField, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer, Icon } from '@shopify/polaris';
+import { EmailMajor, ChatMajor, PhoneMajor, PromoteMinor } from '@shopify/polaris-icons';
 import '../../assets/css/faq.css';
 import '../../App.css';
+import user from '../../assets/images/user.png'
 
 class FAQ extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class FAQ extends Component {
                             <div className={'group-touch'}>
                                 <div className={'item-touch'}>
                                     <div className={'item-left'}>
-                                        <Icon source={CirclePlusMinor} />
+                                        <Icon source={ChatMajor} />
                                     </div>
                                     <div className={'item-right'}>
                                         <div className={'btnEnableApp active'}>
@@ -36,7 +37,7 @@ class FAQ extends Component {
                                 </div>
                                 <div className={'item-touch'}>
                                     <div className={'item-left'}>
-                                        <Icon source={CirclePlusMinor} />
+                                        <Icon source={EmailMajor} />
                                     </div>
                                     <div className={'item-right'}>
                                         <Link url="https://help.shopify.com/manual">orichi247@gmail.com</Link>
@@ -44,7 +45,7 @@ class FAQ extends Component {
                                 </div>
                                 <div className={'item-touch'}>
                                     <div className={'item-left'}>
-                                        <Icon source={CirclePlusMinor} />
+                                        <Icon source={PhoneMajor} />
                                     </div>
                                     <div className={'item-right'}>
                                         <Link url="https://help.shopify.com/manual">+84877566048</Link>
@@ -60,7 +61,79 @@ class FAQ extends Component {
                             </div>
                             <div className={'group-resources'}>
                                 <div className={'item-resource'}>
-                                    <Heading>Inventory UI change</Heading>
+                                    <TextContainer>
+                                        <Heading>Inventory UI change</Heading>
+                                        <p>
+                                            We have switched the position of the Shopify and
+                                            Zapiet locations in the Inventory integration section. You can now connect multiple Zapiet locations ...
+                                        </p>
+                                    </TextContainer>
+                                    <div className={'user-info'}>
+                                        <div className={'left'}>
+                                            <Thumbnail
+                                                source={user}
+                                                alt="Black choker necklace"
+                                            />
+                                        </div>
+                                        <div className={'right'}>
+                                            <TextStyle variation="subdued">Posted by Alex on Friday, August 27, 2021
+                                            </TextStyle>
+                                        </div>
+                                    </div>
+                                    <div className={'view-our-site'}>
+                                        <Link url="https://help.shopify.com/manual">View our site </Link>
+                                        <Button><Icon source={PromoteMinor} /></Button>
+                                    </div>
+                                </div>
+                                <div className={'item-resource'}>
+                                    <TextContainer>
+                                        <Heading>Inventory UI change</Heading>
+                                        <p>
+                                            We have switched the position of the Shopify and
+                                            Zapiet locations in the Inventory integration section. You can now connect multiple Zapiet locations ...
+                                        </p>
+                                    </TextContainer>
+                                    <div className={'user-info'}>
+                                        <div className={'left'}>
+                                            <Thumbnail
+                                                source={user}
+                                                alt="Black choker necklace"
+                                            />
+                                        </div>
+                                        <div className={'right'}>
+                                            <TextStyle variation="subdued">Posted by Alex on Friday, August 27, 2021
+                                            </TextStyle>
+                                        </div>
+                                    </div>
+                                    <div className={'view-our-site'}>
+                                        <Link url="https://help.shopify.com/manual">View our site </Link>
+                                        <Button><Icon source={PromoteMinor} /></Button>
+                                    </div>
+                                </div>
+                                <div className={'item-resource'}>
+                                    <TextContainer>
+                                        <Heading>Inventory UI change</Heading>
+                                        <p>
+                                            We have switched the position of the Shopify and
+                                            Zapiet locations in the Inventory integration section. You can now connect multiple Zapiet locations ...
+                                        </p>
+                                    </TextContainer>
+                                    <div className={'user-info'}>
+                                        <div className={'left'}>
+                                            <Thumbnail
+                                                source={user}
+                                                alt="Black choker necklace"
+                                            />
+                                        </div>
+                                        <div className={'right'}>
+                                            <TextStyle variation="subdued">Posted by Alex on Friday, August 27, 2021
+                                            </TextStyle>
+                                        </div>
+                                    </div>
+                                    <div className={'view-our-site'}>
+                                        <Link url="https://help.shopify.com/manual">View our site </Link>
+                                        <Button><Icon source={PromoteMinor} /></Button>
+                                    </div>
                                 </div>
                             </div>
                         </Card>
