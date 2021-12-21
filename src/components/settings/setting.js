@@ -79,7 +79,7 @@ class Setting extends Component {
                                 {
                                     listLogoData.map((logoitem, index) => {
                                         return (
-                                            <div key={index} className={this.state.indexActiveLogo == index ? 'item-logo active' : 'item-logo'}>
+                                            <div key={index} className={this.state.indexActiveLogo === index ? 'item-logo active' : 'item-logo'}>
                                                 <Button onClick={() => { this.changeLogo(logoitem, index) }}>
                                                     <img src={logoitem} alt="" />
                                                 </Button>
@@ -131,7 +131,7 @@ class Setting extends Component {
                                     placeholder="User name"
                                     value={this.state.userName}
                                     onChange={this.handleChangeUserName}
-                                    error={this.state.userName == '' ? 'User name is required' : ''}
+                                    error={this.state.userName === '' ? 'User name is required' : ''}
                                     autoComplete="off"
                                 />
                             </div>

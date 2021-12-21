@@ -1,4 +1,4 @@
-import React, { useCallback, Component } from 'react';
+import React, {  Component } from 'react';
 import { Tabs, Card } from '@shopify/polaris';
 import Setting from '../settings/setting';
 import FAQ from '../settings/faq';
