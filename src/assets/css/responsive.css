@@ -1,0 +1,56 @@
+@media (max-width:1199px){
+    
+}
+
+@media (max-width:991px){
+    .faq .resources-section .group-resources .item-resource .view-our-site{
+        visibility: visible;
+    }
+}
+
+@media (max-width:767px){ 
+    .setting .colLeft, .setting .colRight{
+        display: block;
+        width: 100%;
+    }
+    .setting .colLeft .w70pc {
+        width: 100%;
+    }
+    .faq .colLeft{
+        width: 48%;
+    }
+    .faq .colRight{
+        width: 48%;
+    }
+    .faq .colRight .watch-video-tutorial .group-video .item-video{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .faq .colRight .watch-video-tutorial .group-video .item-video:nth-child(2n){
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width:479px){ 
+    .main-layout{
+        padding: 20px;
+    }
+    .faq .colLeft{
+        width: 100%;
+    }
+    .faq .colRight{
+        width: 100%;
+    }
+    .faq .resources-section{
+        margin-bottom: 15px;
+    }
+    .faq .colRight .watch-video-tutorial .group-video .item-video{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .faq .colRight .watch-video-tutorial .group-video .item-video:nth-child(2n){
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+}
