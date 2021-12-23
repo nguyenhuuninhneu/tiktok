@@ -1,18 +1,79 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import config from '../../config/config'
 import { Card, Link, Heading, Thumbnail, TextStyle, Button, TextContainer, Icon, Pagination, VideoThumbnail, MediaCard } from '@shopify/polaris';
 import { EmailMajor, ChatMajor, PhoneMajor, PromoteMinor } from '@shopify/polaris-icons';
 import '../../assets/css/faq.css';
 import '../../App.css';
 import user from '../../assets/images/user.png'
 
+var listResource = []
+function LoadResource() {
+    axios.get(config.rootLink + '/FrontEnd/GetPosts')
+        .then(function (response) {
+            // handle success
+            if (response !== undefined && response.data !== null && response.data.posts.length > 0) {
+                listResource = [...response.data.posts]
+            }
+            else {
+                // window.location.reload();
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+}
+LoadResource();
+function convertDate(date){
+    var getDate = Number(date.replace('/Date(','').replace(')/',''));
+    var date2 = new Date(getDate);
+    return date2.toDateString();
+ }
 class FAQ extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            listResource: []
         }
+        // this.LoadResource = this.LoadResource.bind(this);
     }
+    openNewWindow(){
+        window.open('/', '_blank');
+     }
+    
     render() {
+        const list = listResource.map((item, index) => {
+            return (
+                <div className={'item-resource'} key={item.ID}>
+                    <TextContainer>
+                        <Heading>{item.Title}</Heading>
+                        <p>
+                            {item.Description}
+                        </p>
+                    </TextContainer>
+                    <div className={'user-info'}>
+                        <div className={'left'}>
+                            <Thumbnail
+                                source={user}
+                                alt="Black choker necklace"
+                            />
+                        </div>
+                        <div className={'right'}>
+                            <TextStyle variation="subdued">Posted by {item.PostedBy} on {convertDate(item.PostedDate)}
+                            </TextStyle>
+                        </div>
+                    </div>
+                    <div className={'view-our-site'}>
+                        <Link url={item.Link}>View our site </Link>
+                        <Button><Icon source={PromoteMinor} /></Button>
+                    </div>
+                </div>
+            )
+        })
+       
         return (
+
             <div className={'faq'}>
                 <div className={'colLeft w30pc'}>
                     <div className={'touch-section mb-20'}>
@@ -27,7 +88,7 @@ class FAQ extends Component {
                                     </div>
                                     <div className={'item-right'}>
                                         <div className={'btnEnableApp active'}>
-                                            <Button>Chat with us</Button>
+                                            <Button onClick={this.openNewWindow}>Chat with us</Button> 
                                         </div>
                                     </div>
                                 </div>
@@ -36,7 +97,7 @@ class FAQ extends Component {
                                         <Icon source={EmailMajor} />
                                     </div>
                                     <div className={'item-right'}>
-                                        <Link url="https://help.shopify.com/manual">orichi247@gmail.com</Link>
+                                        <Link  onClick={this.openNewWindow}>orichi247@gmail.com</Link>
                                     </div>
                                 </div>
                                 <div className={'item-touch'}>
@@ -44,7 +105,7 @@ class FAQ extends Component {
                                         <Icon source={PhoneMajor} />
                                     </div>
                                     <div className={'item-right'}>
-                                        <Link url="https://help.shopify.com/manual">+84877566048</Link>
+                                        <Link onClick={this.openNewWindow}>+84877566048</Link>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +117,8 @@ class FAQ extends Component {
                                 Resources
                             </div>
                             <div className={'group-resources'}>
-                                <div className={'item-resource'}>
+                                {list}
+                                {/* <div className={'item-resource'}>
                                     <TextContainer>
                                         <Heading>Inventory UI change</Heading>
                                         <p>
@@ -130,7 +192,7 @@ class FAQ extends Component {
                                         <Link url="https://help.shopify.com/manual">View our site </Link>
                                         <Button><Icon source={PromoteMinor} /></Button>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </Card>
                     </div>
