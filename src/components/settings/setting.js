@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import config from '../../config/config'
 import { Card, Button, ButtonGroup, TextField, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer } from '@shopify/polaris';
 import logo from '../../assets/images/tiktok.png'
 import logo1 from '../../assets/images/tiktok-1.png'
