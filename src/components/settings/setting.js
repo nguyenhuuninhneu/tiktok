@@ -9,52 +9,64 @@ import logo2 from '../../assets/images/tiktok-2.png'
 import '../../assets/css/setting.css';
 
 const listLogoData = [logo, logo1, logo2];
-const shopInfo = services.getShopInfo;
+// const shopInfo = services.getShopInfo;
+const shopInfo = 'codonqua.myshopify.com';
 var objSetting = new Object();
 var objShop = new Object();
 
-function GetSetting(shopInfoParam) {
-    axios.get(config.rootLink + '/FrontEnd/GetSetting?shop=' + shopInfoParam)
-        .then(function (response) {
-            if (response !== null && response !== undefined && response.IsSuccess) {
-                objSetting = response.setting;
-                objShop = response.shop;
-            }
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        });
 
-}
-GetSetting(shopInfo);
+
 class Setting extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEnable: objSetting !== null ? objSetting.Active : true,
-            getLogo: objSetting == null ? logo : (objSetting.ButtonStyle === 0 ? logo : objSetting.ButtonStyle === 1 ? logo1 : logo2 ),
-            indexActiveLogo: objSetting !== null ? objSetting.ButtonStyle : 0,
-            userName: objSetting !== null ? objSetting.TiktokUsername  : '',
-            isBottom: objSetting !== null && objSetting.ButtonPositionBottomTop === 1 ? true : false,
-            isLeft: objSetting !== null && objSetting.ButtonPositionLeftRight  === 1 ? true : false,
-            objSetting: objSetting,
-            objShop: objShop
+            isEnable: true,
+            getLogo: logo,
+            indexActiveLogo: 0,
+            userName: ' ',
+            isBottom: true,
+            isLeft: true
         }
+        this.GetSetting(shopInfo);
+
         this.handleEnableApp = this.handleEnableApp.bind(this);
         this.handleChangeUserName = this.handleChangeUserName.bind(this);
         this.handleBottomTop = this.handleBottomTop.bind(this);
         this.handleLeftRight = this.handleLeftRight.bind(this);
-    }
 
+    }
+    GetSetting(shopInfoParam) {
+        var that = this;
+        axios.get(config.rootLink + '/FrontEnd/GetSetting?shop=' + shopInfoParam)
+            .then(function (response) {
+                if (response !== null && response !== undefined && response.data !== undefined && response.data !== null) {
+                    objSetting = response.data.setting;
+                    objShop = response.data.shop;
+                    that.setState(state => ({ isEnable: response.data.setting.Active }));
+                    that.setState(state => ({ getLogo: response.data.setting.ButtonStyle === 0 ? logo : response.data.setting.ButtonStyle === 1 ? logo1 : logo2 }));
+                    that.setState(state => ({ indexActiveLogo: response.data.setting.ButtonStyle }));
+                    that.setState(state => ({ userName: response.data.setting.TiktokUsername }));
+                    that.setState(state => ({ isBottom: response.data.setting.ButtonPositionBottomTop === 0 ? true: false }));
+                    that.setState(state => ({ isLeft: response.data.setting.ButtonPositionLeftRight === 0 ? true: false }));
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+
+
+    }
     handleEnableApp() {
-        this.state.objSetting.Active = !this.state.isEnable;
-        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+        var that = this;
+        objSetting.Active = !that.state.isEnable;
+
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: objSetting })
             .then(function (response) {
                 // handle success
-                if (response !== null && response !== undefined && response.IsSuccess) {
-                    this.setState(state => ({ isEnable: !state.isEnable }));
-                    this.setState(state => ({ objSetting: response.setting }));
+                if (response !== null && response !== undefined && response.data !== undefined && response.data !== null) {
+                    that.setState(state => ({ isEnable: !that.state.isEnable }));
+                    objSetting = response.data.Setting;
                 }
 
             })
@@ -64,14 +76,15 @@ class Setting extends Component {
             });
     }
     changeLogo(logoSelected, index) {
-        this.state.objSetting.ButtonStyle  = this.state.indexActiveLogo;
-        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+        let that = this;
+        objSetting.ButtonStyle = index;
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: objSetting })
             .then(function (response) {
                 // handle success
-                if (response !== null && response !== undefined && response.IsSuccess) {
-                    this.setState(state => ({ getLogo: logoSelected }));
-                    this.setState(state => ({ indexActiveLogo: index }));
-                    this.setState(state => ({ objSetting: response.setting }));
+                if (response !== null && response !== undefined && response.data !== undefined && response.data !== null) {
+                    that.setState(state => ({ getLogo: logoSelected }));
+                    that.setState(state => ({ indexActiveLogo: index }));
+                    objSetting = response.data.Setting;
                 }
 
             })
@@ -81,16 +94,18 @@ class Setting extends Component {
             });
     }
     handleChangeUserName(newValue) {
+        let that = this;
+        that.setState({ userName: newValue })
         if (newValue !== '' && newValue !== null) {
-            this.state.objSetting.TiktokUsername = newValue;
-            axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+            objSetting.TiktokUsername = newValue;
+            axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: objSetting })
                 .then(function (response) {
                     // handle success
-                    if (response !== null && response !== undefined && response.IsSuccess) {
-                        this.setState({ userName: newValue })
-                        this.setState(state => ({ objSetting: response.setting }));
+                    if (response !== null && response !== undefined && response.data !== undefined && response.data !== null) {
+
+                        objSetting = response.data.Setting;
                     }
-    
+
                 })
                 .catch(function (error) {
                     // handle error
@@ -100,13 +115,14 @@ class Setting extends Component {
     };
 
     handleBottomTop() {
-        this.state.objSetting.ButtonPositionBottomTop = !this.state.isBottom ? 0 : 1;
-        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+        let that = this;
+        objSetting.ButtonPositionBottomTop = !that.state.isBottom ? 0 : 1;
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: objSetting })
             .then(function (response) {
                 // handle success
-                if (response !== null && response !== undefined && response.IsSuccess) {
-                    this.setState(state => ({ isBottom: !state.isBottom }));
-                    this.setState(state => ({ objSetting: response.setting }));
+                if (response !== null && response !== undefined && response.data !== undefined && response.data !== null) {
+                    that.setState(state => ({ isBottom: !that.state.isBottom }));
+                    objSetting = response.data.Setting;
                 }
 
             })
@@ -116,13 +132,14 @@ class Setting extends Component {
             });
     }
     handleLeftRight() {
-        this.state.objSetting.ButtonPositionLeftRight  = !this.state.isLeft ? 0 : 1;
-        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+        let that = this;
+        objSetting.ButtonPositionLeftRight = !that.state.isLeft ? 0 : 1;
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: objSetting })
             .then(function (response) {
                 // handle success
-                if (response !== null && response !== undefined && response.IsSuccess) {
-                    this.setState(state => ({ isLeft: !state.isLeft }));
-                    this.setState(state => ({ objSetting: response.setting }));
+                if (response !== null && response !== undefined && response.data !== undefined && response.data !== null) {
+                    that.setState(state => ({ isLeft: !that.state.isLeft }));
+                    objSetting = response.data.Setting;
                 }
             })
             .catch(function (error) {
@@ -130,11 +147,10 @@ class Setting extends Component {
                 console.log(error);
             });
     }
-
     render() {
         const unitPos = '20px';
-        const contentStatus = this.state.isEnable ? 'Enable App' : 'Disable App';
-        const contentClassStatus = this.state.isEnable ? 'btnEnableApp active' : 'btnEnableApp';
+        const contentStatus = !this.state.isEnable ? 'Enable App' : 'Disable App';
+        const contentClassStatus = !this.state.isEnable ? 'btnEnableApp active' : 'btnEnableApp';
         const cssPositionLogo =
             `.setting .colRight .Preview .logo img{`
             + (this.state.isBottom ? `bottom:` + unitPos + `;` : `top:` + unitPos + `;`)
