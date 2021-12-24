@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import config from '../../config/config'
+import services from '../../services/Services'
 import { Card, Button, ButtonGroup, TextField, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer } from '@shopify/polaris';
 import logo from '../../assets/images/tiktok.png'
 import logo1 from '../../assets/images/tiktok-1.png'
@@ -8,17 +9,37 @@ import logo2 from '../../assets/images/tiktok-2.png'
 import '../../assets/css/setting.css';
 
 const listLogoData = [logo, logo1, logo2];
+const shopInfo = services.getShopInfo;
+var objSetting = new Object();
+var objShop = new Object();
 
+function GetSetting(shopInfoParam) {
+    axios.get(config.rootLink + '/FrontEnd/GetSetting?shop=' + shopInfoParam)
+        .then(function (response) {
+            if (response !== null && response !== undefined && response.IsSuccess) {
+                objSetting = response.setting;
+                objShop = response.shop;
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+
+}
+GetSetting(shopInfo);
 class Setting extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEnable: true,
-            getLogo: logo,
-            indexActiveLogo: 0,
-            userName: ' ',
-            isBottom: true,
-            isLeft: true,
+            isEnable: objSetting !== null ? objSetting.Active : true,
+            getLogo: objSetting == null ? logo : (objSetting.ButtonStyle === 0 ? logo : objSetting.ButtonStyle === 1 ? logo1 : logo2 ),
+            indexActiveLogo: objSetting !== null ? objSetting.ButtonStyle : 0,
+            userName: objSetting !== null ? objSetting.TiktokUsername  : '',
+            isBottom: objSetting !== null && objSetting.ButtonPositionBottomTop === 1 ? true : false,
+            isLeft: objSetting !== null && objSetting.ButtonPositionLeftRight  === 1 ? true : false,
+            objSetting: objSetting,
+            objShop: objShop
         }
         this.handleEnableApp = this.handleEnableApp.bind(this);
         this.handleChangeUserName = this.handleChangeUserName.bind(this);
@@ -27,21 +48,87 @@ class Setting extends Component {
     }
 
     handleEnableApp() {
-        this.setState(state => ({ isEnable: !state.isEnable }));
+        this.state.objSetting.Active = !this.state.isEnable;
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+            .then(function (response) {
+                // handle success
+                if (response !== null && response !== undefined && response.IsSuccess) {
+                    this.setState(state => ({ isEnable: !state.isEnable }));
+                    this.setState(state => ({ objSetting: response.setting }));
+                }
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
     }
     changeLogo(logoSelected, index) {
-        this.setState(state => ({ getLogo: logoSelected }));
-        this.setState(state => ({ indexActiveLogo: index }));
+        this.state.objSetting.ButtonStyle  = this.state.indexActiveLogo;
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+            .then(function (response) {
+                // handle success
+                if (response !== null && response !== undefined && response.IsSuccess) {
+                    this.setState(state => ({ getLogo: logoSelected }));
+                    this.setState(state => ({ indexActiveLogo: index }));
+                    this.setState(state => ({ objSetting: response.setting }));
+                }
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
     }
     handleChangeUserName(newValue) {
-        this.setState({ userName: newValue })
+        if (newValue !== '' && newValue !== null) {
+            this.state.objSetting.TiktokUsername = newValue;
+            axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+                .then(function (response) {
+                    // handle success
+                    if (response !== null && response !== undefined && response.IsSuccess) {
+                        this.setState({ userName: newValue })
+                        this.setState(state => ({ objSetting: response.setting }));
+                    }
+    
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
     };
 
     handleBottomTop() {
-        this.setState(state => ({ isBottom: !state.isBottom }));
+        this.state.objSetting.ButtonPositionBottomTop = !this.state.isBottom ? 0 : 1;
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+            .then(function (response) {
+                // handle success
+                if (response !== null && response !== undefined && response.IsSuccess) {
+                    this.setState(state => ({ isBottom: !state.isBottom }));
+                    this.setState(state => ({ objSetting: response.setting }));
+                }
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
     }
     handleLeftRight() {
-        this.setState(state => ({ isLeft: !state.isLeft }));
+        this.state.objSetting.ButtonPositionLeftRight  = !this.state.isLeft ? 0 : 1;
+        axios.post(config.rootLink + '/FrontEnd/UpdateSetting', { obj: this.state.objSetting })
+            .then(function (response) {
+                // handle success
+                if (response !== null && response !== undefined && response.IsSuccess) {
+                    this.setState(state => ({ isLeft: !state.isLeft }));
+                    this.setState(state => ({ objSetting: response.setting }));
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
     }
 
     render() {
