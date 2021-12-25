@@ -8,8 +8,8 @@ import logo2 from '../../assets/images/tiktok-2.png'
 import '../../assets/css/setting.css';
 
 const listLogoData = [logo, logo1, logo2];
-// const shopInfo = config.shop;
-const shopInfo = 'codonqua.myshopify.com';
+const shopInfo = config.shop;
+// const shopInfo = 'codonqua.myshopify.com';
 var objSetting = new Object();
 
 class Setting extends Component {
