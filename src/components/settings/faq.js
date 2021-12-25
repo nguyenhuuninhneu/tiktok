@@ -38,11 +38,31 @@ class FAQ extends Component {
         }
         // this.LoadResource = this.LoadResource.bind(this);
     }
-    openNewWindow(){
-        window.open('/', '_blank');
-     }
-    
+     loadChatPlugin = () => {
+        const script = document.createElement("script");
+        script.src = "//code.tidio.co/rvxustxuoq2e0mgcep1x1zrt3ynxmkhi.js";
+        script.async = true;
+        document.body.appendChild(script);
+
+        const script2 = document.createElement("script");
+        script2.innerHTML = ` (function() {
+          function onTidioChatApiReady() {
+            tidioChatApi.setVisitorData({ 
+              name: "${config.shop}",  
+              tags: ["Tiktok"]
+            });
+          }
+          if (window.tidioChatApi) {
+            window.tidioChatApi.on("ready", onTidioChatApiReady);
+          } else {
+            document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+          }
+        })();` ;
+        document.body.appendChild(script2);
+
+    }
     render() {
+        
         const list = listResource.map((item, index) => {
             return (
                 <div className={'item-resource'} key={item.ID}>
@@ -88,7 +108,7 @@ class FAQ extends Component {
                                     </div>
                                     <div className={'item-right'}>
                                         <div className={'btnEnableApp active'}>
-                                            <Button onClick={this.openNewWindow}>Chat with us</Button> 
+                                            <Button onClick={this.loadChatPlugin}>Chat with us</Button> 
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +117,7 @@ class FAQ extends Component {
                                         <Icon source={EmailMajor} />
                                     </div>
                                     <div className={'item-right'}>
-                                        <Link  onClick={this.openNewWindow}>orichi247@gmail.com</Link>
+                                        <Link url="mailto:orichi247@gmail.com">orichi247@gmail.com</Link>
                                     </div>
                                 </div>
                                 <div className={'item-touch'}>
@@ -105,7 +125,7 @@ class FAQ extends Component {
                                         <Icon source={PhoneMajor} />
                                     </div>
                                     <div className={'item-right'}>
-                                        <Link onClick={this.openNewWindow}>+84877566048</Link>
+                                        <Link url="tel:+84877566048">+84877566048</Link>
                                     </div>
                                 </div>
                             </div>

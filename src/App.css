@@ -9,6 +9,10 @@
     background-color: #F6F6F7;
 }
 
+.hide{
+    visibility: hidden;
+}
+
 .colLeft {
     float: left;
 }
@@ -80,4 +84,8 @@
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 30px;
+}
+
+.Polaris-Frame{
+    min-height: 0 !important;
 }
