@@ -3,7 +3,7 @@
 }
 
 .title-fix{
-    padding: 20px 20px 30px 20px;
+    padding: 20px 20px 20px 20px;
     box-sizing: border-box;
     margin-bottom: 0;
 }
@@ -32,6 +32,8 @@
 .faq .touch-section .group-touch .item-touch .item-left{
     justify-items: left;
     flex: 0.5;
+    font-size: 20px;
+    text-align: center;
 }
 .faq .touch-section .group-touch .item-touch .item-left .Polaris-Icon{
     color: #5C5F62
@@ -41,10 +43,11 @@
     padding-left: 20px;
 }
 
-.faq .touch-section .group-touch .item-touch .item-right .Polaris-Link{
-   color: #0094FF;
-   text-decoration: none;
-    font-weight: 700
+.faq .touch-section .group-touch .item-touch .item-right a{
+    color: #0094FF;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 .faq .touch-section .Polaris-Card,
@@ -58,8 +61,26 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #E1E3E5;
 }
+
+.faq .resources-section .group-resources .item-resource .title-resource {
+    text-decoration: none;
+    display: block;
+    color: #000;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.Polaris-Button:hover , a:hover{
+    cursor: pointer;
+}
+
+.faq .resources-section .group-resources .item-resource .title-resource:hover {
+    color: #2C6ECB;
+}
+
 .faq .resources-section .group-resources .item-resource p{
-    line-height: 20px;
+    font-size: 17px;
+    line-height: 24px;
 }
 .faq .resources-section .group-resources .item-resource .user-info{
     margin-top: 15px;
@@ -79,19 +100,27 @@
 .faq .resources-section .group-resources .item-resource .user-info .right{
     padding-left: 15px;
     font-style: italic;
+    font-size: 6px;
 }
-.faq .resources-section .group-resources .item-resource .view-our-site{
-    visibility: hidden;
-    position: absolute;
-    display: flex;
-    justify-items: center;
-    bottom: 0;
-    left:50%;
-    transform: translate(-50%);
-    
+.faq .resources-section .group-resources .view-our-site{
+   text-align: center;
 }
 
-.faq .resources-section .group-resources .item-resource:hover .view-our-site{
+.faq .resources-section .group-resources .view-our-site .link-our-site{
+    font-size: 15px;
+    color: #2C6ECB;
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    display: inline;
+    margin-top: 1px;
+    border-bottom: 1px solid #2C6ECB;
+    
+}
+.faq .resources-section .group-resources .view-our-site .link-our-site:hover {
+    font-weight: bold;
+}
+/* .faq .resources-section .group-resources .item-resource:hover .view-our-site{
     visibility: visible;
 }
 .faq .resources-section .group-resources .item-resource .view-our-site .Polaris-Link{
@@ -119,7 +148,7 @@
     min-height:0;
     min-width: 0;
 
-}
+} */
 .faq .colRight .watch-video-tutorial .group-video{
     margin: 20px 0;
 

@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import config from '../../config/config'
 import { Card, Button, ButtonGroup, TextField, Layout, SkeletonBodyText, SkeletonDisplayText, SkeletonPage, TextContainer, ContextualSaveBar, Frame, Toast } from '@shopify/polaris';
-import logo from '../../assets/images/tiktok-0.png'
 import logo1 from '../../assets/images/tiktok-1.png'
 import logo2 from '../../assets/images/tiktok-2.png'
 import logo3 from '../../assets/images/tiktok-3.png'
+import logo4 from '../../assets/images/tiktok-4.png'
 import '../../assets/css/setting.css';
 import Loading from '../plugins/Loading'
 
-const listLogoData = [logo, logo1, logo2, logo3];
+const listLogoData = [logo1, logo2, logo3, logo4];
 const shopInfo = config.shop;
-//const shopInfo = 'codonqua.myshopify.com';
-var objSetting = new Object();
+var objSetting = {};
 
 class Setting extends Component {
     constructor(props) {
@@ -21,10 +20,11 @@ class Setting extends Component {
             isLoadingSave: false,
             isHideSaveBar: true,
             isLoaded: false,
+            isShowStepChoosePosition: false,
             showToast: null,
             Setting: {
                 Active: true,
-                getLogo: logo,
+                getLogo: '',
                 indexActiveLogo: 0,
                 userName: ' ',
                 isBottom: true,
@@ -50,13 +50,20 @@ class Setting extends Component {
                         Setting: {
                             ...that.state.Setting,
                             Active: response.data.setting.Active,
-                            getLogo: response.data.setting.ButtonStyle === 0 ? logo : response.data.setting.ButtonStyle === 1 ? logo1 : response.data.setting.ButtonStyle === 2 ? logo2 : logo3,
+                            getLogo: response.data.setting.ButtonStyle === 1 ? logo1 : response.data.setting.ButtonStyle === 2 ? logo2 : response.data.setting.ButtonStyle === 3 ? logo3 : response.data.setting.ButtonStyle === 4 ? logo4 : '',
                             indexActiveLogo: response.data.setting.ButtonStyle,
                             userName: response.data.setting.TiktokUsername,
                             isBottom: response.data.setting.ButtonPositionBottomTop === 0 ? true : false,
                             isLeft: response.data.setting.ButtonPositionLeftRight === 0 ? true : false
                         }
                     });
+                    if (objSetting.ButtonStyle === 0) {
+                        that.setState(state => ({ isShowStepChoosePosition: false }));
+                    }
+                    else {
+                        that.setState(state => ({ isShowStepChoosePosition: true }));
+
+                    }
                     that.setState(state => ({ isLoaded: true }));
                 }
             })
@@ -71,11 +78,14 @@ class Setting extends Component {
         var that = this;
         that.setState(state => ({ isLoadingSave: false }));
         that.setState(state => ({ isHideSaveBar: true }));
+        if (objSetting.ButtonStyle === 0) {
+            that.setState(state => ({ isShowStepChoosePosition: false }));
+        }
         that.setState({
             Setting: {
                 ...that.state.Setting,
                 Active: objSetting.Active,
-                getLogo: objSetting.ButtonStyle === 0 ? logo : objSetting.ButtonStyle === 1 ? logo1 : objSetting.ButtonStyle === 2 ? logo2 : logo3,
+                getLogo: objSetting.ButtonStyle === 1 ? logo1 : objSetting.ButtonStyle === 2 ? logo2 : objSetting.ButtonStyle === 3 ? logo3 : objSetting.ButtonStyle === 4 ? logo4 : '',
                 indexActiveLogo: objSetting.ButtonStyle,
                 userName: objSetting.TiktokUsername,
                 isBottom: objSetting.ButtonPositionBottomTop === 0 ? true : false,
@@ -102,6 +112,7 @@ class Setting extends Component {
                 indexActiveLogo: index
             }
         });
+        that.setState(state => ({ isShowStepChoosePosition: true }));
         that.setState(state => ({ isHideSaveBar: false }));
     }
     handleChangeUserName(newValue) {
@@ -109,7 +120,7 @@ class Setting extends Component {
         that.setState({
             Setting: {
                 ...that.state.Setting,
-                userName: newValue
+                userName: newValue.trim()
             }
         });
         that.setState(state => ({ isHideSaveBar: false }));
@@ -178,8 +189,8 @@ class Setting extends Component {
                                         {
                                             listLogoData.map((logoitem, index) => {
                                                 return (
-                                                    <div key={index} className={this.state.Setting.indexActiveLogo === index ? 'item-logo active' : 'item-logo'}>
-                                                        <Button onClick={() => { this.changeLogo(logoitem, index) }}>
+                                                    <div key={index + 1} className={this.state.Setting.indexActiveLogo === index + 1 ? 'item-logo active' : 'item-logo'}>
+                                                        <Button onClick={() => { this.changeLogo(logoitem, index + 1) }}>
                                                             <img src={logoitem} alt="" />
                                                         </Button>
                                                     </div>
@@ -193,50 +204,53 @@ class Setting extends Component {
                                     </div>
                                 </Card>
                             </div>
-                            <div className={'button-position-section flexible-p mb-20'}>
-                                <Card sectioned>
-                                    <div className={'common-title'}>
-                                        Step 2: Choose the button position
-                                    </div>
-                                    <div className={'group-position'}>
-                                        <div className={'item-left'}>
-                                            <ButtonGroup segmented>
-                                                <div className={this.state.Setting.isBottom ? 'choose-bottom active' : ''}>
-                                                    <Button onClick={this.handleBottomTop} >Bottom</Button>
+                            {this.state.isShowStepChoosePosition &&
+                                <>
+                                    <div className={'button-position-section flexible-p mb-20'}>
+                                        <Card sectioned>
+                                            <div className={'common-title'}>
+                                                Step 2: Choose the button position
+                                            </div>
+                                            <div className={'group-position'}>
+                                                <div className={'item-left'}>
+                                                    <ButtonGroup segmented>
+                                                        <div className={this.state.Setting.isBottom ? 'choose-bottom active' : ''}>
+                                                            <Button onClick={this.handleBottomTop} >Bottom</Button>
+                                                        </div>
+                                                        <div className={!this.state.Setting.isBottom ? 'choose-top active' : ''}>
+                                                            <Button onClick={this.handleBottomTop} >Top</Button>
+                                                        </div>
+                                                    </ButtonGroup>
                                                 </div>
-                                                <div className={!this.state.Setting.isBottom ? 'choose-top active' : ''}>
-                                                    <Button onClick={this.handleBottomTop} >Top</Button>
+                                                <div className={'item-right'}>
+                                                    <ButtonGroup segmented>
+                                                        <div className={this.state.Setting.isLeft ? 'choose-left active' : ''}>
+                                                            <Button onClick={this.handleLeftRight} >Left</Button>
+                                                        </div>
+                                                        <div className={!this.state.Setting.isLeft ? 'choose-right active' : ''}>
+                                                            <Button onClick={this.handleLeftRight} >Right</Button>
+                                                        </div>
+                                                    </ButtonGroup>
                                                 </div>
-                                            </ButtonGroup>
-                                        </div>
-                                        <div className={'item-right'}>
-                                            <ButtonGroup segmented>
-                                                <div className={this.state.Setting.isLeft ? 'choose-left active' : ''}>
-                                                    <Button onClick={this.handleLeftRight} >Left</Button>
+                                                <div className={'cb'}>
                                                 </div>
-                                                <div className={!this.state.Setting.isLeft ? 'choose-right active' : ''}>
-                                                    <Button onClick={this.handleLeftRight} >Right</Button>
-                                                </div>
-                                            </ButtonGroup>
-                                        </div>
-                                        <div className={'cb'}>
-                                        </div>
-                                    </div>
-                                    <div className={'title-username'}>
-                                        Tiktok Username  <span className={'required'}>(*)</span>
-                                    </div>
-                                    <div className={'w70pc mt-10'}>
-                                        <TextField
-                                            placeholder="User name"
-                                            value={this.state.Setting.userName}
-                                            onChange={this.handleChangeUserName}
-                                            error={this.state.Setting.userName === '' ? 'User name is required' : ''}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+                                            </div>
+                                            <div className={'title-username'}>
+                                                Tiktok Username  <span className={'required'}>(*)</span>
+                                            </div>
+                                            <div className={'w70pc mt-10'}>
+                                                <TextField
+                                                    placeholder="User name"
+                                                    value={this.state.Setting.userName}
+                                                    onChange={this.handleChangeUserName}
+                                                    error={this.state.Setting.userName === '' ? 'User name is required' : ''}
+                                                    autoComplete="off"
+                                                />
+                                            </div>
 
-                                </Card>
-                            </div>
+                                        </Card>
+                                    </div>
+                                </>}
                         </div>
                         <div className='colRight w48pc'>
                             <div className={'Preview'}>
@@ -307,7 +321,7 @@ class Setting extends Component {
                                                         // handle error
                                                         console.log(error);
                                                     });
-                                            } 
+                                            }
 
                                         },
                                         loading: this.state.isLoadingSave,
@@ -318,6 +332,7 @@ class Setting extends Component {
                                         onAction: () => {
                                             var that = this;
                                             that.DiscardChange();
+
                                         },
                                     }}
                                 />

@@ -2,43 +2,82 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import config from '../../config/config'
 import { Card, Link, Heading, Thumbnail, TextStyle, Button, TextContainer, Icon, Pagination, VideoThumbnail, MediaCard } from '@shopify/polaris';
-import { EmailMajor, ChatMajor, PhoneMajor, PromoteMinor } from '@shopify/polaris-icons';
 import '../../assets/css/faq.css';
 import '../../App.css';
 import user from '../../assets/images/user.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExternalLinkAlt, faPhoneAlt, faEnvelope, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 
-var listResource = []
-function LoadResource() {
-    axios.get(config.rootLink + '/FrontEnd/GetPosts')
-        .then(function (response) {
-            // handle success
-            if (response !== undefined && response.data !== null && response.data.posts.length > 0) {
-                listResource = [...response.data.posts]
-            }
-            else {
-                // window.location.reload();
-            }
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        });
-}
-LoadResource();
-function convertDate(date){
-    var getDate = Number(date.replace('/Date(','').replace(')/',''));
+
+function convertDate(date) {
+    var getDate = Number(date.replace('/Date(', '').replace(')/', ''));
     var date2 = new Date(getDate);
     return date2.toDateString();
- }
+}
 class FAQ extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listResource: []
+            listResource: [],
+            listVideo: [],
+            listVideoSliced: [],
+            currentPage: 1,
+            totalPage: 1,
         }
+        this.LoadResource();
+        this.LoadVideo();
         // this.LoadResource = this.LoadResource.bind(this);
     }
-     loadChatPlugin = () => {
+    LoadResource() {
+        var that = this;
+        axios.get(config.rootLink + '/FrontEnd/GetPosts')
+            .then(function (response) {
+                // handle success
+                if (response !== undefined && response.data !== null && response.data.posts.length > 0) {
+                    that.setState({
+                        listResource: [...that.state.listResource, ...response.data.posts]
+                    })
+                    // listResource = [...response.data.posts]
+                }
+                else {
+                    // window.location.reload();
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+    }
+    LoadVideo() {
+        var that = this;
+        axios.get(config.rootLink + '/FrontEnd/GetVideos')
+            .then(function (response) {
+                // handle success
+                if (response !== undefined && response.data !== null && response.data.videos.length > 0) {
+                    that.setState({
+                        listVideo: [...that.state.listVideo, ...response.data.videos]
+                    })
+                    that.setState(state => ({ currentPage: 1 }));
+                    that.setState(state => ({ totalPage: Math.ceil(response.data.videos.length / 2) }));
+                    that.paginate(that.state.listVideo, 2, 1);
+                }
+                else {
+                    // window.location.reload();
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+    }
+    paginate(array, page_size = 2, page_number = 1) {
+        var that = this;
+        that.setState({
+            listVideoSliced: array.slice((page_number - 1) * page_size, page_number * page_size)
+        })
+        
+    }
+    loadChatPlugin = () => {
         const script = document.createElement("script");
         script.src = "//code.tidio.co/rvxustxuoq2e0mgcep1x1zrt3ynxmkhi.js";
         script.async = true;
@@ -62,12 +101,13 @@ class FAQ extends Component {
 
     }
     render() {
-        
-        const list = listResource.map((item, index) => {
+
+        const list = this.state.listResource.map((item, index) => {
             return (
                 <div className={'item-resource'} key={item.ID}>
                     <TextContainer>
-                        <Heading>{item.Title}</Heading>
+                        {/* <Heading>{item.Title}</Heading> */}
+                        <a href={item.Link} target="_blank" className='title-resource'> {item.Title} {item.Title} {item.Title}</a>
                         <p>
                             {item.Description}
                         </p>
@@ -84,14 +124,10 @@ class FAQ extends Component {
                             </TextStyle>
                         </div>
                     </div>
-                    <div className={'view-our-site'}>
-                        <Link url={item.Link}>View our site </Link>
-                        <Button><Icon source={PromoteMinor} /></Button>
-                    </div>
                 </div>
             )
         })
-       
+
         return (
 
             <div className={'faq'}>
@@ -104,28 +140,30 @@ class FAQ extends Component {
                             <div className={'group-touch'}>
                                 <div className={'item-touch'}>
                                     <div className={'item-left'}>
-                                        <Icon source={ChatMajor} />
+                                        <FontAwesomeIcon icon={faCommentDots} />
                                     </div>
                                     <div className={'item-right'}>
                                         <div className={'btnEnableApp active'}>
-                                            <Button onClick={this.loadChatPlugin}>Chat with us</Button> 
+                                            <Button onClick={this.loadChatPlugin}>Chat with us</Button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className={'item-touch'}>
                                     <div className={'item-left'}>
-                                        <Icon source={EmailMajor} />
+                                        <FontAwesomeIcon icon={faEnvelope} />
                                     </div>
                                     <div className={'item-right'}>
-                                        <Link url="mailto:orichi247@gmail.com">orichi247@gmail.com</Link>
+                                        <a href="mailto:orichi247@gmail.com" target="_blank">orichi247@gmail.com</a>
+                                        {/* <Link url="mailto:orichi247@gmail.com" target="_blank">orichi247@gmail.com</Link> */}
                                     </div>
                                 </div>
                                 <div className={'item-touch'}>
                                     <div className={'item-left'}>
-                                        <Icon source={PhoneMajor} />
+                                        <FontAwesomeIcon icon={faPhoneAlt} />
                                     </div>
                                     <div className={'item-right'}>
-                                        <Link url="tel:+84877566048">+84877566048</Link>
+                                        <a href="tel:+84877566048" target="_blank">+84877566048</a>
+                                        {/* <Link url="tel:+84877566048" target="_blank">+84877566048</Link> */}
                                     </div>
                                 </div>
                             </div>
@@ -138,81 +176,10 @@ class FAQ extends Component {
                             </div>
                             <div className={'group-resources'}>
                                 {list}
-                                {/* <div className={'item-resource'}>
-                                    <TextContainer>
-                                        <Heading>Inventory UI change</Heading>
-                                        <p>
-                                            We have switched the position of the Shopify and
-                                            Zapiet locations in the Inventory integration section. You can now connect multiple Zapiet locations ...
-                                        </p>
-                                    </TextContainer>
-                                    <div className={'user-info'}>
-                                        <div className={'left'}>
-                                            <Thumbnail
-                                                source={user}
-                                                alt="Black choker necklace"
-                                            />
-                                        </div>
-                                        <div className={'right'}>
-                                            <TextStyle variation="subdued">Posted by Alex on Friday, August 27, 2021
-                                            </TextStyle>
-                                        </div>
-                                    </div>
-                                    <div className={'view-our-site'}>
-                                        <Link url="https://help.shopify.com/manual">View our site </Link>
-                                        <Button><Icon source={PromoteMinor} /></Button>
-                                    </div>
+                                <div className={'view-our-site'}>
+                                    <a href="https://orichi.info/" target="_blank" className={'link-our-site'}>View our site  <FontAwesomeIcon icon={faExternalLinkAlt} /></a>
                                 </div>
-                                <div className={'item-resource'}>
-                                    <TextContainer>
-                                        <Heading>Inventory UI change</Heading>
-                                        <p>
-                                            We have switched the position of the Shopify and
-                                            Zapiet locations in the Inventory integration section. You can now connect multiple Zapiet locations ...
-                                        </p>
-                                    </TextContainer>
-                                    <div className={'user-info'}>
-                                        <div className={'left'}>
-                                            <Thumbnail
-                                                source={user}
-                                                alt="Black choker necklace"
-                                            />
-                                        </div>
-                                        <div className={'right'}>
-                                            <TextStyle variation="subdued">Posted by Alex on Friday, August 27, 2021
-                                            </TextStyle>
-                                        </div>
-                                    </div>
-                                    <div className={'view-our-site'}>
-                                        <Link url="https://help.shopify.com/manual">View our site </Link>
-                                        <Button><Icon source={PromoteMinor} /></Button>
-                                    </div>
-                                </div>
-                                <div className={'item-resource'}>
-                                    <TextContainer>
-                                        <Heading>Inventory UI change</Heading>
-                                        <p>
-                                            We have switched the position of the Shopify and
-                                            Zapiet locations in the Inventory integration section. You can now connect multiple Zapiet locations ...
-                                        </p>
-                                    </TextContainer>
-                                    <div className={'user-info'}>
-                                        <div className={'left'}>
-                                            <Thumbnail
-                                                source={user}
-                                                alt="Black choker necklace"
-                                            />
-                                        </div>
-                                        <div className={'right'}>
-                                            <TextStyle variation="subdued">Posted by Alex on Friday, August 27, 2021
-                                            </TextStyle>
-                                        </div>
-                                    </div>
-                                    <div className={'view-our-site'}>
-                                        <Link url="https://help.shopify.com/manual">View our site </Link>
-                                        <Button><Icon source={PromoteMinor} /></Button>
-                                    </div>
-                                </div> */}
+
                             </div>
                         </Card>
                     </div>
@@ -229,39 +196,34 @@ class FAQ extends Component {
                                 </p>
                             </TextContainer>
                             <div className={'group-video'}>
-                                <div className={'item-video'}>
-                                    <MediaCard
-                                        title="Turn your side-project into a business"
-                                        primaryAction={{
-                                            content: 'Learn more',
-                                            onAction: () => { },
-                                        }}
-                                        description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
-                                        popoverActions={[{ content: 'Dismiss', onAction: () => { } }]}
-                                    >
-                                        <VideoThumbnail
-                                            videoLength={80}
-                                            thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
-                                        />
-                                    </MediaCard>
-                                </div>
-                                <div className={'item-video'}>
-                                    <MediaCard
-                                        title="Turn your side-project into a business"
-                                        primaryAction={{
-                                            content: 'Learn more',
-                                            onAction: () => { },
-                                        }}
-                                        description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
-                                        popoverActions={[{ content: 'Dismiss', onAction: () => { } }]}
-                                    >
-                                        <VideoThumbnail
-                                            videoLength={80}
-                                            thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
-                                        />
-                                    </MediaCard>
-                                </div>
+                                {/* {this.state.contentSlice} */}
+                                {
+                                    this.state.listVideoSliced.map((video, index) => {
+                                        return (
+                                            <div className={'item-video'} key={video.ID}>
+                                                <MediaCard
+                                                    title={video.Title}
+                                                    primaryAction={{
+                                                        content: 'Learn more',
+                                                        onAction: () => { },
+                                                    }}
+                                                    description={video.Description}
+                                                    popoverActions={[{ content: 'Dismiss', onAction: () => { } }]}
+                                                >
+                                                    <VideoThumbnail
+                                                        videoLength={80}
+                                                        thumbnailUrl={video.ImageLink}
+                                                    />
+                                                </MediaCard>
+                                            </div>
+                                        )
+
+
+
+                                    })}
                                 <div className={'cb'}>
+
+
 
                                 </div>
                             </div>
@@ -269,15 +231,24 @@ class FAQ extends Component {
                                 <Pagination
                                     hasPrevious
                                     onPrevious={() => {
-                                        console.log('Previous');
+                                        var that = this;
+                                        if (that.state.currentPage > 1) {
+                                            that.setState(state => ({ currentPage: that.state.currentPage - 1 }));
+                                            that.paginate(that.state.listVideo, 2, that.state.currentPage - 1);
+
+                                        }
                                     }}
                                     hasNext
                                     onNext={() => {
-                                        console.log('Next');
+                                        var that = this;
+                                        if (that.state.currentPage < that.state.totalPage) {
+                                            that.setState(state => ({ currentPage: that.state.currentPage + 1 }));
+                                            that.paginate(that.state.listVideo, 2, that.state.currentPage + 1);
+                                        }
                                     }}
                                 />
                                 <div className={'title-page'}>
-                                    <TextStyle variation="subdued">1/4</TextStyle>
+                                    <TextStyle variation="subdued">{this.state.currentPage}/{this.state.totalPage}</TextStyle>
                                 </div>
                             </div>
                         </Card>
