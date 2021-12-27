@@ -131,7 +131,7 @@ class FAQ extends Component {
         return (
 
             <div className={'faq'}>
-                <div className={'colLeft w30pc'}>
+                <div className={'colLeft w32pc'}>
                     <div className={'touch-section mb-20'}>
                         <Card sectioned>
                             <div className={'common-title title-fix'}>
@@ -146,6 +146,8 @@ class FAQ extends Component {
                                         <div className={'btnEnableApp active'}>
                                             <Button onClick={this.loadChatPlugin}>Chat with us</Button>
                                         </div>
+                                    </div>
+                                    <div className='cb'>
                                     </div>
                                 </div>
                                 <div className={'item-touch'}>

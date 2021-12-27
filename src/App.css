@@ -41,6 +41,14 @@
     width: 66%;
 }
 
+.w32pc {
+    width: 32%;
+}
+
+.w68pc {
+    width: 68%;
+}
+
 .cb {
     clear: both;
 }

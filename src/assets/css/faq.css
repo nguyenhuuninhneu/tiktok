@@ -30,24 +30,24 @@
     border-bottom: none;
 }
 .faq .touch-section .group-touch .item-touch .item-left{
-    justify-items: left;
-    flex: 0.5;
-    font-size: 20px;
+    float: left;
+    width: 28%;
+    font-size: 2.2rem;
     text-align: center;
 }
-.faq .touch-section .group-touch .item-touch .item-left .Polaris-Icon{
+.faq .touch-section .group-touch .item-touch .item-left svg{
     color: #5C5F62
+
 }
 .faq .touch-section .group-touch .item-touch .item-right{
-    flex: 2;
-    padding-left: 20px;
+    width: 72%;
+    float: left;
 }
 
 .faq .touch-section .group-touch .item-touch .item-right a{
     color: #0094FF;
     text-decoration: none;
     font-weight: 600;
-    font-size: 12px;
 }
 
 .faq .touch-section .Polaris-Card,
@@ -66,8 +66,8 @@
     text-decoration: none;
     display: block;
     color: #000;
-    font-size: 8px;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1.6rem;
 }
 
 .Polaris-Button:hover , a:hover{
@@ -75,11 +75,11 @@
 }
 
 .faq .resources-section .group-resources .item-resource .title-resource:hover {
-    color: #2C6ECB;
+    color: #0094FF;
 }
 
 .faq .resources-section .group-resources .item-resource p{
-    font-size: 17px;
+    font-size: 1em;
     line-height: 24px;
 }
 .faq .resources-section .group-resources .item-resource .user-info{
@@ -100,7 +100,7 @@
 .faq .resources-section .group-resources .item-resource .user-info .right{
     padding-left: 15px;
     font-style: italic;
-    font-size: 6px;
+    font-size: 1em;
 }
 .faq .resources-section .group-resources .view-our-site{
    text-align: center;
