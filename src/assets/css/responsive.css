@@ -3,9 +3,7 @@
 }
 
 @media (max-width:991px){
-    .faq .resources-section .group-resources .item-resource .view-our-site{
-        visibility: visible;
-    }
+   
 }
 
 @media (max-width:767px){ 
@@ -17,10 +15,10 @@
         width: 100%;
     }
     .faq .colLeft{
-        width: 48%;
+        width: 100%;
     }
     .faq .colRight{
-        width: 48%;
+        width: 100%;
     }
     .faq .colRight .watch-video-tutorial .group-video .item-video{
         width: 100%;

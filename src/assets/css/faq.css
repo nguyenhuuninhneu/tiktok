@@ -55,6 +55,9 @@
 {
     border-radius: 0 !important;
 }
+.faq .resources-section{
+    margin-bottom: 20px;
+}
 .faq .resources-section .group-resources .item-resource{
     position: relative;
     padding-bottom: 15px;
@@ -109,7 +112,7 @@
 }
 
 .faq .resources-section .group-resources .view-our-site .link-our-site{
-    font-size: 15px;
+    font-size: 12px;
     color: #2C6ECB;
     text-decoration: none;
     font-weight: 600;
