@@ -2,8 +2,8 @@ const config = {
     rootLink: "http://localhost:57238",
     //rootLink: "https://feed.roughgroup.com",
     version: 1,
-    shop: OTGetUrlParameter("shop"),
-    //shop: 'codonqua.myshopify.com',
+    //shop: OTGetUrlParameter("shop"),
+    shop: 'codonqua.myshopify.com',
     admin: OTGetUrlParameter("admin"),
     hmac: window.location.href.split("&hmac=")[1],
     apiKey: '63bab6830fe1160c3640ef292dadba83'

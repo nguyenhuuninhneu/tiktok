@@ -8,11 +8,16 @@ import user from '../../assets/images/user.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExternalLinkAlt, faPhoneAlt, faEnvelope, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var d = new Date();
+var monthName=months[d.getMonth()]; // "July" (or current month)
 
 function convertDate(date) {
     var getDate = Number(date.replace('/Date(', '').replace(')/', ''));
     var date2 = new Date(getDate);
-    return date2.toDateString();
+    var strDate = weekday[date2.getDay()] + ', ' + months[date2.getMonth()] + ' ' + date2.getDate() + ', ' + date2.getFullYear();
+    return strDate;
 }
 class FAQ extends Component {
     constructor(props) {
