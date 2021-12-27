@@ -296,7 +296,7 @@ class Setting extends Component {
                                         content: "Save",
                                         onAction: () => {
                                             var that = this;
-                                            if (that.state.Setting.userName !== '' && that.state.Setting.userName !== null && that.state.Setting.userName.trim() !== '') {
+                                            if ((that.state.Setting.userName !== '' && that.state.Setting.userName !== null && that.state.Setting.userName.trim() !== '') || (that.state.Setting.indexActiveLogo === 0 && that.state.Setting.userName.trim() === '')) {
                                                 that.setState(state => ({ isLoadingSave: true }));
                                                 objSetting.Active = that.state.Setting.Active;
                                                 objSetting.TiktokUsername = that.state.Setting.userName;
