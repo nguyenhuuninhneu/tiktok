@@ -107,7 +107,7 @@ class FAQ extends Component {
                 <div className={'item-resource'} key={item.ID}>
                     <TextContainer>
                         {/* <Heading>{item.Title}</Heading> */}
-                        <a href={item.Link} target="_blank" className='title-resource'> {item.Title} {item.Title} {item.Title}</a>
+                        <a href={item.Link} target="_blank" className='title-resource'> {item.Title}</a>
                         <p>
                             {item.Description}
                         </p>
