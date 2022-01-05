@@ -307,14 +307,22 @@ class Setting extends Component {
                                                     .then(function (response) {
                                                         // handle success
                                                         if (response !== null && response !== undefined && response.data !== undefined && response.data !== null) {
+                                                           
+                                                           if (response.data.IsSuccess) {
                                                             that.setState(state => ({ isLoadingSave: false }));
                                                             that.setState(state => ({ isHideSaveBar: true }));
                                                             that.setState({ showToast: <Toast content={"Save!"} onDismiss={() => { that.setState({ showToast: null }) }} duration={4500}></Toast> });
                                                             objSetting = response.data.Setting;
+                                                           } else {
+                                                            that.setState(state => ({ isLoadingSave: false }));
+                                                            that.setState(state => ({ isHideSaveBar: true }));
+                                                            that.setState({ showToast: <Toast content={response.data.Messenger} onDismiss={() => { that.setState({ showToast: null }) }} duration={4500}></Toast> });
+                                                           }
                                                         }
 
                                                     })
                                                     .catch(function (error) {
+                                                        
                                                         var that = this;
                                                         that.DiscardChange();
                                                         that.setState({ showToast: <Toast content={"Error!"} onDismiss={() => { that.setState({ showToast: null }) }} duration={4500}></Toast> });
