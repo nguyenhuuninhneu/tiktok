@@ -1,0 +1,185 @@
+.suggestion {
+    background-color: #fff;
+}
+
+.suggestion .light-fixed{
+    position: fixed;
+    top: 1rem;
+    right: 0;
+}
+.suggestion .light-hide {
+    right: -100%;
+    transition: 1s all ease-in-out; -moz-transition: 1s all ease-in-out;
+}
+.suggestion .light-show {
+    right: 0;
+    transition: 0.5s all ease-in-out; -moz-transition: 0.5s all ease-in-out;
+}
+.tag-horizontal:hover img{
+    width: 6.5rem;
+    transition: 0.5s all ease-in-out; -moz-transition: 0.5s all ease-in-out;
+}
+.tag-horizontal:not(:hover) img{
+    transition: 0.5s all ease-out; -moz-transition: 0.5s all ease-out;
+}
+.tag-horizontal img{
+    width: 5.5rem;
+}
+
+.suggestion .feature-fixed{
+    background-color: #fff;
+    position: fixed;
+    top: 10%;
+    width: 400px;
+    height: 85%;
+    right: 0;
+}
+.suggestion .feature-hide {
+    right: -100%;
+    transition: 1s all ease-in-out; -moz-transition: 1s all ease-in-out;
+}
+.suggestion .feature-show {
+    right: 0;
+    transition: 1s all ease-in-out; -moz-transition: 1s all ease-in-out;
+}
+.suggestion .header {
+    position: absolute;
+    width: 80%;
+    top: -5%;
+    right: 0;
+}
+.suggestion .header .block-light{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: #EDB209;
+    padding: 4px 0;
+}
+.suggestion .header .block-light .title{
+    color:#fff;
+    font-weight: 700;
+    padding-left: 20px;
+    padding-right: 15px;
+    font-size: 2.5rem;
+}
+.suggestion .header .block-light .image{
+    padding-right: 10px;
+}
+.suggestion .header .block-light .image img{
+    width: 25px;
+}
+.suggestion .header .label{
+    font-style: italic;
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 15px;
+    color: #000;
+}
+.suggestion .new-feature{
+    margin-top: 50px;
+}
+.suggestion .new-feature .Polaris-Card{
+    border-radius: 0;
+    box-shadow: none;
+}
+.suggestion .new-feature .tag-feature{
+    margin-bottom: 10px;
+}
+.suggestion .new-feature p span,
+.suggestion .new-feature .tag-feature span{
+    font-weight: 500;
+}
+.suggestion .new-feature .tag-feature a{
+    text-decoration: none;
+    color:#EDB209;
+    font-weight: 700;
+    padding-left: 2px;
+    font-size: 20px;
+}
+.suggestion .new-feature .tag-feature a:hover{
+    box-shadow: #fff;
+}
+.suggestion .dismiss{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+}
+.suggestion .dismiss img{width: 25px;}
+
+.suggestion .new-feature .list-feature{
+    max-height: 300px;
+   overflow-y: scroll;
+   box-sizing: border-box;
+   margin: 20px 0;
+}
+.suggestion .new-feature .list-feature .item-feature{
+    position: relative;
+    padding: 15px 5px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #EDB209;
+    box-shadow: 0px 4px 7px rgba(139, 139, 139, 0.08);
+}
+.suggestion .new-feature .list-feature .item-feature .vote-number{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #EDB209;
+    color: #000;
+    font-weight: 500;
+    width: 40px;
+    text-align: center;
+}
+.suggestion .new-feature .list-feature .item-feature .your-suggestion{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #EDB209;
+    color: #000;
+    font-weight: 500;
+}
+.suggestion .new-feature .list-feature::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+.suggestion .new-feature .list-feature::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+}
+ 
+.suggestion .new-feature .list-feature::-webkit-scrollbar-thumb {
+    background-color: #EDB209;
+    border-radius: 100px;
+}
+.suggestion .new-feature .list-feature .item-feature:last-child{
+    margin-bottom: 5px;
+}
+.suggestion .new-feature .list-feature .item-feature .left{
+    width: 15%;
+    font-size: 20px;
+    text-align: center;
+}
+.suggestion .new-feature .list-feature .item-feature .left .green svg{
+    color: #188061;
+}
+.suggestion .new-feature .list-feature .item-feature .left .gray svg{
+    color: #5C5F62;
+}
+.suggestion .new-feature .list-feature .item-feature .right{
+    width: calc(100% - 15%);
+}
+.suggestion .new-feature .list-feature .item-feature .right .title{
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.suggestion .new-feature .list-feature .item-feature .right .description{
+    font-size: 12px;
+}
+
+

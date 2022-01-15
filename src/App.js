@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import LayoutPixel from './components/pixel/LayoutPixel';
+import Suggestion from './components/suggestion/suggestion';
 
 
 export default function App() {
@@ -11,7 +12,9 @@ export default function App() {
   }
 
   return (
-    <LayoutPixel selectedTab={selectedTab} AppCallbackSelectedTabFunction={AppCallbackSelectedTabFunction}></LayoutPixel>
-    
+    <>
+      <LayoutPixel selectedTab={selectedTab} AppCallbackSelectedTabFunction={AppCallbackSelectedTabFunction}></LayoutPixel>
+      <Suggestion></Suggestion>
+    </>
   );
 }
