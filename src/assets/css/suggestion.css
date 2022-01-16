@@ -45,7 +45,7 @@
 .suggestion .header {
     position: absolute;
     width: 80%;
-    top: -5%;
+    top: -20px;
     right: 0;
 }
 .suggestion .header .block-light{
@@ -106,6 +106,9 @@
     transform: translateX(-50%);
     margin-bottom: 10px;
 }
+.suggestion .tag-dismiss{
+    margin: auto;
+}
 .suggestion .dismiss img{width: 25px;}
 
 .suggestion .new-feature .list-feature{
@@ -116,7 +119,7 @@
 }
 .suggestion .new-feature .list-feature .item-feature{
     position: relative;
-    padding: 15px 5px;
+    padding: 20px 5px;
     margin-bottom: 20px;
     margin-right: 5px;
     box-sizing: border-box;
@@ -130,10 +133,12 @@
     top: 0;
     right: 0;
     background-color: #EDB209;
+    line-height: 16px;
     color: #000;
     font-weight: 500;
     width: 40px;
     text-align: center;
+    font-size: 12px;
 }
 .suggestion .new-feature .list-feature .item-feature .your-suggestion{
     position: absolute;
@@ -142,6 +147,8 @@
     background-color: #EDB209;
     color: #000;
     font-weight: 500;
+    font-size: 12px;
+    padding: 0 4px;
 }
 .suggestion .new-feature .list-feature::-webkit-scrollbar {
     width: 5px;
@@ -180,6 +187,36 @@
 }
 .suggestion .new-feature .list-feature .item-feature .right .description{
     font-size: 12px;
+    width: 90%;
+}
+.suggestion .new-feature .feature-show{
+    display: block;
+}
+.suggestion .new-feature .feature-hide{
+    display: none;
 }
 
+.suggestion .new-feature .form-add-feature .Polaris-Heading{
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+}
+.valid{
+    color: red;
+}
+.suggestion .new-feature .Polaris-Button--primary{
+    float: right;
+}
 
+.suggestion .new-feature hr{
+    color: #EEE;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+/* view more */
+.my-anchor-css-class{
+    text-decoration: none;
+    color: #EDB209;
+}
