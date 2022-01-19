@@ -9,7 +9,7 @@ import lightvertical from '../../assets/images/light-vertical.png'
 import lighthorizontal from '../../assets/images/light-horizontal.png'
 import dismiss from '../../assets/images/dismiss.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import ShowMoreText from "react-show-more-text";
 
 const listSuggest = [
@@ -130,17 +130,17 @@ const Suggestion = () => {
         setTextTitle(newValue);
         if (newValue == '') {
             setTitleValid(moreAppConfig.TilteValidationText);
-        }else{
+        } else {
             setTitleValid('');
         }
-       
+
     };
     const [textDes, setTextDes] = useState('');
     const handleChangeTextDes = (newValue) => {
         setTextDes(newValue);
         if (newValue == '') {
             setDescriptionValid(moreAppConfig.DescriptionValidationText);
-        }else {
+        } else {
             setDescriptionValid('');
         }
     };
@@ -162,7 +162,7 @@ const Suggestion = () => {
 
         setList(newList);
     }
-    function handleSendSuggestion(){
+    function handleSendSuggestion() {
         if (textTitle == '') {
             setTitleValid(moreAppConfig.TilteValidationText);
             return false;
@@ -172,11 +172,12 @@ const Suggestion = () => {
             return false;
         }
         var newItem = {
-            Id : 100,
+            Id: 100,
             Title: textTitle,
             Description: textDes,
-            Vote : 1,
-            Status : 1,
+            Vote: 1,
+            Status: 1,
+            YourSuggestion: true,
         }
         list.unshift(newItem);
         setList(list);
@@ -243,7 +244,7 @@ const Suggestion = () => {
                                             placeholder="Title"
                                             value={textTitle}
                                             error={textTitleValid}
-                                            onChange={(e)=>{handleChangeTextTitle(e)}}
+                                            onChange={(e) => { handleChangeTextTitle(e) }}
                                             autoComplete="off"
                                             maxLength="150"
                                         />
@@ -252,7 +253,7 @@ const Suggestion = () => {
                                             placeholder="Description"
                                             value={textDes}
                                             error={textDescriptionValid}
-                                            onChange={(e)=>{handleChangeTextDes(e)}}
+                                            onChange={(e) => { handleChangeTextDes(e) }}
                                             autoComplete="off"
                                             multiline={4}
                                         />
@@ -299,12 +300,12 @@ const Suggestion = () => {
                                                 <div className='vote-number'>
                                                     {suggest.Vote} votes
                                                 </div>
-                                                {suggest.YourSuggestion ? 
-                                                <>
-                                                    <div className='your-suggestion'>
-                                                        your suggestion
-                                                    </div>
-                                                </> : ''}
+                                                {suggest.YourSuggestion ?
+                                                    <>
+                                                        <div className='your-suggestion'>
+                                                            your suggestion
+                                                        </div>
+                                                    </> : ''}
 
                                             </div>
                                         )
@@ -312,15 +313,16 @@ const Suggestion = () => {
                                 }
 
                             </div>
+                            <div className='dismiss'>
+                                <a href="javascript://" onClick={() => { setShowFeature(false) }} className='tag-dismiss' title="Close" >
+                                    <img src={dismiss} />
+                                </a>
+                            </div>
                         </Card.Section>
                     </Card>
                 </div>
 
-                <div className='dismiss'>
-                    <a href="javascript://" onClick={() => { setShowFeature(false) }} className='tag-dismiss' title="Close" >
-                        <img src={dismiss} />
-                    </a>
-                </div>
+
 
             </div>
         </div>

@@ -29,10 +29,9 @@
 .suggestion .feature-fixed{
     background-color: #fff;
     position: fixed;
-    top: 10%;
-    width: 400px;
-    height: 85%;
-    right: 0;
+    top: 5%;
+    width: 40%;
+    height: 90%;
 }
 .suggestion .feature-hide {
     right: -100%;
@@ -42,12 +41,12 @@
     right: 0;
     transition: 1s all ease-in-out; -moz-transition: 1s all ease-in-out;
 }
-.suggestion .header {
+/* .suggestion .header {
     position: absolute;
     width: 80%;
     top: -20px;
     right: 0;
-}
+} */
 .suggestion .header .block-light{
     display: flex;
     align-items: center;
@@ -82,9 +81,26 @@
     margin-right: 15px;
     color: #000;
 }
-.suggestion .new-feature{
-    margin-top: 50px;
+.suggestion .new-feature {
+    margin-top: 20px;
+    max-height: 570px;
+    overflow-y: scroll;
 }
+
+.suggestion .new-feature::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+.suggestion .new-feature::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+}
+ 
+.suggestion .new-feature::-webkit-scrollbar-thumb {
+    background-color: #EDB209;
+    border-radius: 100px;
+}
+
 .suggestion .new-feature .Polaris-Card{
     border-radius: 0;
     box-shadow: none;
@@ -111,18 +127,18 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .suggestion .tag-dismiss{
     margin: auto;
 }
-.suggestion .dismiss img{width: 25px;}
+.suggestion .dismiss img{width: 20px;}
 
 .suggestion .new-feature .list-feature{
     max-height: 300px;
    overflow-y: scroll;
    box-sizing: border-box;
-   margin: 20px 0;
+   margin-top: 20px;
 }
 .suggestion .new-feature .list-feature .item-feature{
     position: relative;
@@ -191,6 +207,10 @@
     font-weight: bold;
     font-size: 14px;
     margin-bottom: 5px;
+    width: 85%;
+    overflow: hidden;
+    height: 16px;
+    line-height: 16px;
 }
 .suggestion .new-feature .list-feature .item-feature .right .description{
     font-size: 12px;
@@ -219,8 +239,8 @@
     color: #EEE;
     width: 90%;
     margin: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 /* view more */
 .my-anchor-css-class{

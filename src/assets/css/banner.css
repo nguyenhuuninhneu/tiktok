@@ -1,0 +1,151 @@
+.banner{
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+    overflow: hidden;
+}
+
+
+.banner .banner-block{
+    position: relative;
+}
+.banner .banner-block .intro{
+    background: #C33D45;
+    position: fixed;
+    top: 5%;
+    right: 0;
+    width: 45%;
+    height: 90%;
+}
+
+.banner .banner-block .intro .info{
+    float: right;
+    background: #FFFAEB;
+    width: 60%;
+    height: 100%;
+    margin-right: 40px;
+    overflow: hidden;
+
+}
+
+.banner .banner-block .intro .info .Polaris-Heading {
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    padding-top: 4px;
+}
+
+.banner .banner-block .intro .info .year{
+    text-align: right;
+    color: #C33D45;
+    font-size: 4em;
+    font-weight: bold;
+    line-height: 1em;
+    padding-right: 20px;
+}
+.banner .banner-block .intro .info .underline{
+    background: #C33D45;
+    margin-top: 15px;
+    margin-right: 20px;
+    height: 12px;
+    width: 14%;
+    float: right;
+}
+
+.banner .banner-block .intro .info p{
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
+
+.banner .banner-block .intro .info p a{
+    text-decoration: none;
+    border-bottom: 1px solid #C33D45;
+}
+
+.banner .banner-block .intro .info .holiday_code {
+    background-color: #DB4F6D;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-bottom: 5px;
+}
+.c_DB4F6D{
+    color:#DB4F6D;
+    font-weight: 700;
+}
+
+.banner .banner-block .intro .info .message{
+    text-align: right;
+    /* width: 80%; */
+    padding-top: 20px;
+    font-style: italic;
+    padding-left: 42px;
+    padding-right: 20px;
+}
+
+
+
+
+.banner .banner-block .main{
+    background: #C33D45;
+    position: fixed;
+    top: 5%;
+    right: 0;
+    width: 40%;
+    height: 90%;
+}
+
+.banner .banner-block .main .frame{
+    background-color: #FFFAEB;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    margin-top: 40px;
+    padding: 4px;
+}
+.banner .banner-block .main .frame::before{
+    content: "";
+    background: #C33D45;
+    width: 50px;
+    height: 100px;
+    right: 65px;
+    top: 40px;
+    position: absolute;
+    border-radius: 0 0 50px 50px;
+}
+
+.banner .banner-block .main .frame .content{
+    padding: 2px;
+    height: 100%;
+    border:1px solid #C33D45;
+    position: relative;
+}
+
+.banner .banner-block .main .content::before{
+    content: "";
+    background: #C33D45;
+    width: 95%;
+    height: 1px;
+    bottom: 50px;
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+}
