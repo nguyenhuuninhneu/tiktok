@@ -193,7 +193,7 @@ const Suggestion = () => {
 
         <div className='suggestion'>
             <div className={!isShowFeature ? 'light-fixed light-show' : 'light-fixed light-hide'}>
-                <a href="javascript://" onClick={() => { setShowFeature(true) }} className='tag-horizontal' title="Features Suggestion" >
+                <a href="#" onClick={() => { setShowFeature(true) }} className='tag-horizontal' title="Features Suggestion" >
                     <img src={lighthorizontal} />
                 </a>
             </div>
@@ -223,7 +223,7 @@ const Suggestion = () => {
                                             </p>
                                             <div className='tag-feature'>
                                                 <TextStyle >You can always suggest a </TextStyle>
-                                                <a href="javascript://" onClick={() => { openFormAddNewFeature() }} title="New feature" >
+                                                <a href="#" onClick={() => { openFormAddNewFeature() }} title="New feature" >
                                                     New feature
                                                 </a>
                                             </div>
@@ -271,7 +271,7 @@ const Suggestion = () => {
                                         return (
                                             <div className='item-feature' key={index}>
                                                 <div className='left'>
-                                                    <a href="javascript://" className={suggest.Status == 0 ? 'gray' : 'green'} onClick={() => { changeSuggestStatus(suggest) }} title={suggest.Status == 0 ? 'Like' : 'Dislike'} >
+                                                    <a href="#" className={suggest.Status == 0 ? 'gray' : 'green'} onClick={() => { changeSuggestStatus(suggest) }} title={suggest.Status == 0 ? 'Like' : 'Dislike'} >
                                                         <FontAwesomeIcon icon={faThumbsUp} />
                                                     </a>
                                                 </div>
@@ -314,7 +314,7 @@ const Suggestion = () => {
 
                             </div>
                             <div className='dismiss'>
-                                <a href="javascript://" onClick={() => { setShowFeature(false) }} className='tag-dismiss' title="Close" >
+                                <a href="#" onClick={() => { setShowFeature(false) }} className='tag-dismiss' title="Close" >
                                     <img src={dismiss} />
                                 </a>
                             </div>

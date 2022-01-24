@@ -83,7 +83,7 @@
 }
 .suggestion .new-feature {
     margin-top: 20px;
-    max-height: 570px;
+    max-height: 470px;
     overflow-y: scroll;
 }
 
@@ -242,6 +242,10 @@
     margin-bottom: 30px;
     margin-top: 30px;
 }
+.suggestion .new-feature textarea{
+    max-height: 106px;
+}
+
 /* view more */
 .my-anchor-css-class{
     text-decoration: none;

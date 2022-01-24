@@ -9,17 +9,20 @@
     z-index: 99999;
     overflow: hidden;
 }
-
+.hide-banner{
+    display: none;
+}
 
 .banner .banner-block{
     position: relative;
 }
 .banner .banner-block .intro{
-    background: #C33D45;
+    /* background: #C33D45; */
+    background-size: contain;
     position: fixed;
     top: 5%;
     right: 0;
-    width: 45%;
+    width: 40%;
     height: 90%;
 }
 
@@ -123,7 +126,7 @@
     background: #C33D45;
     width: 50px;
     height: 100px;
-    right: 65px;
+    right: 13%;
     top: 40px;
     position: absolute;
     border-radius: 0 0 50px 50px;
@@ -147,5 +150,78 @@
     text-align: center;
     display: block;
     left: 50%;
+    transform: translateX(-50%);
+}
+
+.banner .banner-block .main .content .title{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 20px;
+    padding-top: 55px;
+}
+.banner .banner-block .main .content .Polaris-Button{
+    color: #fff;
+    font-size: 16px;
+    background:#C33D45;
+    border: none;
+    padding: 2px 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.banner .banner-block .main .content .common{
+    margin-top: 55px;
+    text-align: center;
+}
+
+.banner .banner-block .main .content .common .vote-star .enjoy{
+    font-size: 2.6rem;
+    font-weight: 400;
+}
+.banner .banner-block .main .content .common .vote-star .message{
+    padding-top: 15px;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 14px;
+    width: 50%;
+    margin: auto;
+}
+.banner .banner-block .main .content .common .vote-star .star {
+    padding-top: 30px;
+}
+
+.banner .banner-block .main .content .common .vote-star .star .star-ratings .star-container svg{
+    width: 30px !important;
+    height: 30px !important;
+}
+.banner .banner-block .main .content .common .send-improvement p{
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.banner .banner-block .main .content .common .send-improvement .Polaris-TextField--multiline{
+    width: 80%;
+    margin: auto;
+}
+.banner .banner-block .main .content .common .send-improvement .Polaris-InlineError{
+    padding-left: 40px;
+}
+.banner .banner-block .main .content .common .send-improvement textarea{
+    background: #DB4F6D;
+    opacity: 0.54;
+    color: #fff;
+    max-height: 106px;
+}
+
+.banner .banner-block .main .content .common .thank-you p{
+    padding: 0 30px;
+    line-height: 25px;
+    text-align: left;
+}
+.banner .banner-block .main .content .common .thank-you .Polaris-Button{
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    margin-left: 0;
     transform: translateX(-50%);
 }
